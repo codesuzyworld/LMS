@@ -7,11 +7,8 @@
     <title>LMS</title>
 </head>
 <body>
-    <h1> All Students </h1>
+    <h1> Laravel CMS </h1>
 
-    @foreach ($students as $student)
-        {{ $student -> fname }}
-        <br>
-    @endforeach
+
 </body>
 </html>
