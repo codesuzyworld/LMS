@@ -61,10 +61,39 @@ class StudentController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * This is a custom piece of deletion method, its temporary delete
      */
-    public function destroy(Student $student)
+    public function trash($id)
     {
-        //
+        Student::destroy($id);
+        return redirect() -> route('students.trashed');        
     }
+
+    /**
+     * This is the recycle bin, it uses an inbuilt function called onlyTrashed, which shows all the deleted students within the database
+     */
+    public function trashed()
+    {
+        $students = Student::onlyTrashed() -> get();
+        return view('students.trashed', ['students' => $students]);  
+    }
+
+    /**
+     * Remove the specified resource from storage, this is permanent delete
+     */
+    public function destroy($id)
+    {
+        $student = Student::withTrashed() -> where('id', $id) -> first();
+        $student -> forceDelete();
+        return redirect() -> route('students.index');   
+    }
+
+    public function restore($id)
+    {
+        $student = Student::withTrashed() -> where('id', $id) -> first();
+        $student -> restore();
+        return redirect() -> route('students.index');        
+    }
+
+
 }

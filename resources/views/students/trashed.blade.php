@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col">
-            <h1 class="display-2">All Students</h1>
+            <h1 class="display-2">Trashed Students</h1>
         </div>
     </div>
     
@@ -16,11 +16,11 @@
                             <h5 class="card-title">
                                 {{$student -> fname}}
                             </h5>
-                            <a href="{{ route('students.edit', $student -> id) }}">
-                                Edit
+                            <a href="{{ route('students.restore', $student -> id) }}">
+                                Restore
                             </a>
-                            <a href="{{ route('students.trash', $student -> id) }}">
-                                Delete
+                            <a href="{{ route('students.destroy', $student -> id) }}">
+                                Delete Forever
                             </a>
                         </div>
                     </div>
@@ -28,5 +28,6 @@
             @endforeach
         </div>        
     </div>
+
 
 @endsection
