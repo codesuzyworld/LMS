@@ -21,7 +21,10 @@
                   <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
+                  <a class="nav-link" href="{{ route('students.index') }}">Students</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('courses.index') }}">Courses</a>
                 </li>
         </nav>
     </div>
