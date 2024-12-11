@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('courseID');
             $table->text('description');
+            $table->integer('faculty_id')->unsigned();
             $table->softDeletes();
             $table->timestamps();
         });

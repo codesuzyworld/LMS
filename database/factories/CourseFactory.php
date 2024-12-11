@@ -20,6 +20,7 @@ class CourseFactory extends Factory
             'name' => fake()->words(3, true),
             'courseID' => 'HTML' . fake()->numerify('####'),
             'description' => fake()->paragraph(),
+            'faculty_id' => fake()->numberBetween(1,3),
         ];
     }
 }

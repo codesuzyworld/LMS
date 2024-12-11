@@ -16,7 +16,7 @@
                             <h5 class="card-title">
                                 {{$course->name}}
                             </h5>
-                            <p class="card-text text-muted mb-1">{{$course->id}}</p>
+                            <p class="card-text text-muted mb-1">{{$course->courseID}}</p>
                             <p class="card-text mb-3">{{$course->description}}</p>
                             <a href="{{ route('courses.edit', $course->id) }}">
                                 Edit

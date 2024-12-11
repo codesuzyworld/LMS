@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Student;
+use App\Models\Course;
 
 class StudentController extends Controller
 {
@@ -23,7 +24,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('students.create');
+        return view('students.create')
+            ->with('courses', Course::all());
     }
 
     /**
