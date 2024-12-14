@@ -14,8 +14,21 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">
-                                {{$student -> fname}}
+                                {{ $student->fname . ' ' . $student->lname }}
                             </h5>
+                            <p class="card-text">
+                                {{ $student->email }}
+                            </p>
+                            <p class="card-text">
+                                Courses Enrolled: <br>
+                                @if ($student->courses->isEmpty())
+                                    No courses enrolled
+                                @else
+                                    @foreach ($student->courses as $course)
+                                        {{ $course->name}} <br>
+                                    @endforeach
+                                @endif
+                            </p>
                             <a href="{{ route('students.edit', $student -> id) }}">
                                 Edit
                             </a>

@@ -27,11 +27,14 @@
 
             <div class="mb-3">
                 <label for="courses" class="form-label">Select Course</label>
-                <select type="courses" id="courses">
                     @foreach ($courses as $course)
-                    <option value="{{ $course -> id }}">{{ $course -> name }}</option>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="courses[]" value="{{ $course->id }}" id="course{{ $course->id }}">
+                        <label class="form-check-label" for="course{{ $course->id }}">
+                            {{ $course->name }}
+                        </label>
+                    </div>
                     @endforeach
-                </select>
             </div>     
 
 

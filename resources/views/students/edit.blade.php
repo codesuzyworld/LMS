@@ -24,7 +24,27 @@
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" value="{{ $student->email}}">
-            </div>     
+            </div>
+            
+            <div class="mb-3">
+                <label for="courses" class="form-label">Select Course</label>
+                    @foreach ($courses as $course)
+                    <div class="form-check">
+                        <input class="form-check-input" 
+                            type="checkbox" name="courses[]" 
+                            value="{{ $course->id }}" 
+                            id="course{{ $course->id }}"
+                            @if($student->courses->contains($course->id))
+                                checked
+                            @endif
+                        >
+                        <label class="form-check-label" for="course{{ $course->id }}">
+                            {{ $course->name }}
+                        </label>
+                    </div>
+                    @endforeach
+            </div>    
+            
             <button type="submit" class="btn btn-primary">Add Student</button>
         </form>                
     </div>

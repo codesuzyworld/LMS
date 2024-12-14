@@ -33,7 +33,13 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
-        Student::create($request->validated());
+        //OLD CODE
+        // Student::create($request->validated());
+        // return redirect()->route('students.index');
+
+        //NEW CODE FOR ATTACH() 
+        $student = Student::create($request->validated());
+        $student->courses()->attach($request->courses);
         return redirect()->route('students.index');
     }
 
@@ -50,7 +56,9 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        return view('students.edit', compact('student'));
+        return view('students.edit')
+            ->with('student', $student)
+            ->with('courses', Course::all());
     }
 
     /**
@@ -59,6 +67,7 @@ class StudentController extends Controller
     public function update(UpdateStudentRequest $request, Student $student)
     {
         $student -> update($request->validated());
+        $student->courses()->sync($request->courses);
         return redirect()->route('students.index');        
     }
 
